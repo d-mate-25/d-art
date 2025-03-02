@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Z0ZMF9GQY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4Z0ZMF9GQY');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIMA ART</title>
+    <link rel="icon" href="logo.svg" type="image/x-icon">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .top-nav {
+            background-color: #fff;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .top-nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .nav-menu a.active {
+            background-color: #D454A9;
+            color: white;
+        }
+
+        .main-banner {
+            display: flex;
+            max-width: 1200px;
+            margin: 30px auto;
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        /* 슬라이더 관련 스타일 수정 */
+        .banner-left {
+            flex: 2;
+            background-color: #333;
+            color: white;
+            padding: 0; /* 패딩 제거 */
+            border-radius: 15px;
+            position: relative;
+            min-height: 300px;
+            overflow: hidden;
+            box-shadow: 0 0px 25px rgba(0, 0, 10, 0.4); /* 그림자 추가 */
+        }
+
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            min-height: 300px;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .logo {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 23px;
+        }
+
+        .banner-right {
+            flex: 1;
+            background-color: #D454A9;
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .banner-right:hover {
+            transform: translateY(-5px);
+            background-color: #da56ae; /* 호버 시 배경색 */
+        }
+        .banner-right h2 {
+            font-size: 2.5em; /* 제목 글자 크기 */
+            margin: 0; /* 여백 제거 */
+        }
+
+        .banner-right p {
+            font-size: 1.2em; /* 부제목 글자 크기 */
+            margin: 5px 0 0 0; /* 약간의 여백 */
+        }
+
+        .search-bar {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #searchInput {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        #searchInput:focus {
+            border-color: #D454A9;
+            outline: none;
+        }
+
+        .sort-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sort-button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sort-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .sort-button.active {
+            background-color: #D454A9;
+            color: white;
+        }
+
+        .show-list {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .show {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .show:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .show.ended {
+            opacity: 0.6;
+        }
+
+        .show img {
+            width: 100px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .show-info {
+            flex: 1;
+        }
+
+        .show-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .show-date {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .show-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            transition: transform 0.2s;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item.ended {
+            opacity: 0.6;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 10px;
+            z-index: 1000;
+        }
+        .view-toggle-btn {
+            width: 60px;
+            height: 60px;
+            background-color: #D454A9;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 13px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            background-color: #D454A9;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+            word-break: keep-all;
+        }
+
+        .floating-btn:hover, .view-toggle-btn:hover {
+            background-color: #b33d74;
+            transform: scale(1.05);
+        }
+
+        .slide-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #D454A9; /* 활성화된 닷 색상 */
+        }
+
+        .slide-title {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            z-index: 10;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 24px;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            border-radius: 30%;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(87, 38, 66, 0.3) 5%,
+                rgba(58, 24, 48, 0.3) 20%,
+                rgba(58, 24, 48, 0.3) 80%,
+                rgba(87, 38, 66, 0.3) 100%
+            );
+            z-index: 0;
+        }
+
+        .load-more-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background-color: #D454A9;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-bottom: 65px;
+        }
+
+        .load-more-btn:hover {
+            background-color: #b33d74;
+            transform: scale(1.05);
+        }
+
+        .load-more-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .footer {
+            background-color: #f0f0f0; /* 회색 배경 */
+            padding: 20px 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-content a {
+            color: #D454A9; /* 하이퍼링크 색상 */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .footer-content a:hover {
+            color: #b33d74; /* 호버 시 하이퍼링크 색상 */
+        }
+
+         /* 기존 스타일에 추가할 모바일 대응 CSS */
+        @media (max-width: 768px) {
+            .top-nav {
+                white-space: nowrap; /* 줄바꿈 방지 */
+            }
+            
+            .top-nav-content {
+                flex-direction: column; /* 세로 방향으로 변경 */
+                align-items: flex-start; /* 왼쪽 정렬 */
+                padding: 10px;
+
+                overflow-x: auto; /* 가로 스크롤 허용 */
+                -webkit-overflow-scrolling: touch; /* iOS 스크롤 부드럽게 */
+                padding: 0 10px;
+                scroll-behavior: smooth; /* 부드러운 스크롤 효과 */
+                /* 스크롤바 숨기기 */
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
+            
+            /* Chrome, Safari 스크롤바 숨기기 */
+            .top-nav-content::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .logo {
+                flex-shrink: 0; /* 로고 크기 고정 */
+                margin-right: 15px;
+            }
+            
+            .nav-menu {
+                flex-shrink: 0; /* 메뉴 크기 고정 */
+            }
+            
+            .nav-menu a {
+                padding: 8px 12px; /* 모바일에서 패딩 조정 */
+            }
+
+    
+            .main-banner {
+                flex-direction: column;
+                padding: 0 10px;
+            }
+
+            .banner-left {
+                min-height: 250px;
+                width: 100%;
+            }
+
+            .banner-right {
+                padding: 20px;
+            }
+
+            .banner-right h2 {
+                font-size: 1.8em;
+            }
+
+            .banner-right p {
+                font-size: 1em;
+            }
+
+            .search-bar {
+            flex-direction: column;       
+            gap: 10px;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0 10px; /* 패딩 조정 */
+                margin: 15px auto; /* 상하 여백 조정 */
+            }
+            
+            #searchInput {
+                width: 100%; /* 전체 너비로 설정 */
+                max-width: 100%; /* 최대 너비 제한 */
+                margin: 0; /* 기존 마진 제거 */
+                box-sizing: border-box; /* 패딩을 너비에 포함 */
+            }
+            
+            .sort-buttons {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                gap: 8px; /* 버튼 간격 조정 */
+            }
+            
+            .sort-button {
+                flex: 1;
+                text-align: center;
+                white-space: nowrap;
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+  
+            .floating-buttons {
+                right: 10px;
+                bottom: 10px;
+            }
+
+            .floating-btn, .view-toggle-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .show-gallery {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .view-toggle-btn {
+                font-size: 10px;
+                white-space: pre-line; /* 줄바꿈을 자연스럽게 유지 */
+            }
+        }
+            
+        @media (max-width: 480px) {
+            .banner-left {
+                min-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <div class="top-nav-content">
+            <a href="https://i-dima.github.io/DIMAART/" class="logo">DIMA ART</a>
+            <div class="nav-menu">
+                <a href="#" class="active">전체</a>
+                <a href="#">공연</a>
+                <a href="#">전시</a>
+                <a href="#">중계</a>
+                <a href="#">영상</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-banner">
+        <div class="banner-left">
+            <div class="slide-dots">
+                <div class="dot"></div>
+            </div>
+        </div>
+        <div class="banner-right" onclick="location.href='https://i-dima.github.io/DIMAART/소개'">
+            <h2>DIMA ART</h2>
+            <p>자세히 보기</p>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="검색어를 입력해주세요(공연명, 장소, 출연, 주최 및 협업기관)">
+        <div class="sort-buttons">
+            <button class="sort-button active">최신순</button>
+            <button class="sort-button">오래된 순</button>
+        </div>
+    </div>
+
+    <div id="showContainer" class="show-list">
+        <!-- JavaScript로 내용이 채워집니다 -->
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="https://i-dima.github.io/I-DIMA/" target="_blank">I-DIMAㅣ</a>
+            <a href="https://i-dima.github.io/I-DIMA/service" target="_blank">이용약관ㅣ</a>
+            <a href="https://i-dima.github.io/I-DIMA/service#privacy" target="_blank">개인정보 처리방침</a>
+        </div>
+    </footer>
+
+    <div class="floating-buttons">
+        <button id="viewToggleBtn" class="view-toggle-btn">갤러리<br>보기</button>
+        <a href="https://forms.gle/n285JPvDRxT1zS126" target="_blank" class="floating-btn">+</a>
+    </div>
+
+    <script>
+    // 구글 차트 라이브러리 로드 후 실행
+    google.charts.load("current", { packages: ["corechart"] }).then(() => {
+        const myKey = "1HARkehL11DD1-92_XO6ypNRKqkpayO-Rf4kKuViCLbU"
+        let query = new google.visualization.Query(
+            `http://spreadsheets.google.com/tq?key=${myKey}&pub=1`
+        );
+
+        query.send((response) => {
+            if (response.isError()) {
+                console.error("Error in query: " + response.getMessage());
+                return;
+            }
+
+            let dataTable = response.getDataTable().toJSON();
+            let jsonData = JSON.parse(dataTable);
+            let cols = jsonData.cols.map((col) => col.label);
+            let shows = processShowData(jsonData, cols);
+            
+            // 초기 데이터 로드 및 이벤트 리스너 설정
+            initializeApp(shows);
+        });
+    });
+
+    // 스프레드시트 데이터 처리 함수
+    function processShowData(jsonData, cols) {
+        let rows = jsonData.rows.map((row) => {
+            let newRow = {};
+            row.c.forEach((obj, index) => {
+                if (obj == null) return;
+                const colName = cols[index];
+                newRow[colName] = "f" in obj ? obj["f"] : obj["v"];
+            });
+            return newRow;
+        });
+
+        return rows.filter(row => row['표시 ON/OFF'] === 'TRUE').map(row => {
+            // 일시 데이터가 없는 경우를 대비한 기본값 처리
+            const date = row['일시'] || '';
+            const dateParts = date ? date.split('~') : ['', ''];
+            
+            return {
+                name: row['공연명'] || '',
+                date: dateParts[0]?.trim() || '',
+                endDate: dateParts[1]?.trim() || dateParts[0]?.trim() || '',
+                venue: row['장소'] || '',
+                type: row['종류'] || '',
+                cast: row['출연'] || '',
+                duration: row['관람시간'] || '',
+                description: row['설명'] || '',
+                image: row['메인포스터'] || '',
+                organizer: row['주최/주관'] || '',
+                withorganizer: row['협업기관'] || '',
+                mainNotice: row['메인공지 ON/OFF'] === 'TRUE',
+                gallery: [row['사진1'], row['사진2'], row['사진3'], row['사진4']]
+                    .filter(img => img && img !== '')
+            };
+        });
+    }
+
+    // 앱 초기화 및 이벤트 설정
+    function initializeApp(shows) {
+        let currentCategory = '전체';
+        let currentSort = 'latest';
+        let isListView = true;
+        let pageSize = 12; // 한 페이지당 보여줄 항목 수
+        let currentPage = 1; // 현재 페이지
+
+        // 카테고리 네비게이션 설정
+        setupCategoryNavigation();
+        // 정렬 버튼 설정
+        setupSortButtons();
+        // 메인 배너 슬라이더 설정
+        setupMainBannerSlider(shows);
+        // 초기 공연 목록 로드
+        loadShows(shows);
+        // 검색 기능 설정
+        setupSearch();
+        // 뷰 전환 버튼 설정
+        setupViewToggle();
+
+        // 카테고리 네비게이션 설정 함수
+        function setupCategoryNavigation() {
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    currentCategory = link.textContent;
+                    currentPage = 1; // 카테고리 변경 시 페이지 리셋
+                    filterAndLoadShows();
+                });
+            });
+        }
+
+        // 정렬 버튼 설정 함수
+        function setupSortButtons() {
+            const sortButtons = document.querySelectorAll('.sort-button');
+            sortButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    sortButtons.forEach(b => b.classList.remove('active'));
+                    button.classList.add('active');
+                    currentSort = button.textContent === '최신순' ? 'latest' : 'oldest';
+                    currentPage = 1; // 정렬 변경 시 페이지 리셋
+                    filterAndLoadShows();
+                });
+            });
+        }
+
+        // 기본 정렬 버튼 활성화
+        const defaultSortButton = document.querySelector('.sort-button.active');
+        if (defaultSortButton) {
+                currentSort = 'latest'; // 최신순으로 설정
+                filterAndLoadShows(); // 초기 데이터 로드
+        }
+
+        // 메인 배너 슬라이더 설정 함수
+        function setupMainBannerSlider(shows) {
+            const mainNoticeShows = shows.filter(show => show.mainNotice);
+            if (mainNoticeShows.length === 0) return;
+
+            const bannerLeft = document.querySelector('.banner-left');
+            bannerLeft.innerHTML = '';
+
+            const slider = document.createElement('div');
+            slider.className = 'banner-slider';
+
+            const slideDots = document.createElement('div');
+            slideDots.className = 'slide-dots';
+
+            let currentSlide = 0;
+            let slides = [];
+            let dots = [];
+
+            mainNoticeShows.forEach((show, index) => {
+            // 슬라이드 생성
+            const slide = document.createElement('div');
+            slide.className = `slide ${index === 0 ? 'active' : ''}`;
+            slide.style.backgroundImage = `url(${show.image})`;
+            // 링크 수정
+            slide.setAttribute('data-url', `https://i-dima.github.io/DIMAART/${show.name}`);
+
+            // 제목과 날짜를 포함할 컨테이너
+            const textContainer = document.createElement('div');
+            textContainer.style.position = 'absolute';
+            textContainer.style.top = '50%';
+            textContainer.style.transform = 'translateY(-50%)';
+            textContainer.style.left = '53px';
+            textContainer.style.color = 'white';
+            textContainer.style.textShadow = '1px 1px 3px rgba(0,0,0,0.8)';
+            textContainer.style.wordBreak = 'keep-all';
+
+            // 제목
+            const titleText = document.createElement('div');
+            titleText.style.fontSize = '40px';
+            titleText.style.fontWeight = 'bold';
+            titleText.textContent = show.name;
+
+            // 날짜
+            const dateText = document.createElement('div');
+            dateText.style.fontSize = '20px';
+            dateText.style.marginTop = '10px';
+            dateText.textContent = formatDateDisplay(show.date, show.endDate);
+    
+            textContainer.appendChild(titleText);
+            textContainer.appendChild(dateText);
+            slide.appendChild(textContainer);
+
+            // 현재 활성화된 슬라이드 이름 가져오기
+            function getActiveSlideName() {
+                const activeSlide = document.querySelector('.slide.active');
+                if (activeSlide) {
+                    return activeSlide.getAttribute('data-url'); // 혹은 다른 데이터 속성
+                }
+                return null;
+            }
+
+            // 슬라이드 링크처리            
+            slide.addEventListener('click', (e) => {
+                const activeSlideName = getActiveSlideName();
+                if (activeSlideName) {
+                    console.log('Navigating to:', activeSlideName); // 값 확인
+                    window.location.href = activeSlideName;
+                } else {
+                    console.error('No active slide found!');
+                }
+            });
+
+            // 슬라이드 클릭 이벤트
+            slider.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diffX = startX - endX;
+                clearInterval(slideInterval); // 기존 타이머 제거
+                if (diffX > 10) { // 오른쪽으로 슬라이드
+                    nextSlide();
+                } else if (diffX < -10) { // 왼쪽으로 슬라이드
+                    prevSlide();
+                }
+                slideInterval = setInterval(nextSlide, 5000); // 새로운 타이머 시작
+            });
+
+            slider.appendChild(slide);
+            slides.push(slide);
+
+            // 닷 생성
+            const dot = document.createElement('div');
+            dot.className = `dot ${index === 0 ? 'active' : ''}`;
+            dot.addEventListener('click', () => goToSlide(index));
+            slideDots.appendChild(dot);
+            dots.push(dot);
+        });
+
+            // 슬라이더 추가 완료 후 터치스크롤 이벤트 추가
+            let startX = 0;
+            slider.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+
+            });
+
+            slider.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diffX = startX - endX;
+
+                if (diffX > 10) { // 오른쪽으로 슬라이드
+                    nextSlide();
+                } else if (diffX < -10) { // 왼쪽으로 슬라이드
+                    prevSlide();
+                }
+            });
+
+            // 화살표 생성
+            const arrows = createArrows();
+            bannerLeft.appendChild(arrows.left);
+            bannerLeft.appendChild(arrows.right);
+            
+            bannerLeft.appendChild(slider);
+            bannerLeft.appendChild(slideDots);
+
+            // 자동 슬라이드
+            let slideInterval = setInterval(nextSlide, 5000);
+
+            // 슬라이드 이동 함수
+            function goToSlide(index) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                
+                currentSlide = index;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+
+            function nextSlide() {
+                goToSlide((currentSlide + 1) % slides.length);
+            }
+
+            function prevSlide() {
+                goToSlide((currentSlide - 1 + slides.length) % slides.length);
+            }
+
+            function createArrows() {
+                const arrowLeft = document.createElement('div');
+                arrowLeft.className = 'arrow left';
+                arrowLeft.textContent = '<';
+                arrowLeft.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    clearInterval(slideInterval);
+                    prevSlide();
+                    slideInterval = setInterval(nextSlide, 5000);
+                });
+
+                const arrowRight = document.createElement('div');
+                arrowRight.className = 'arrow right';
+                arrowRight.textContent = '>';
+                arrowRight.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    clearInterval(slideInterval);
+                    nextSlide();
+                    slideInterval = setInterval(nextSlide, 5000);
+                });
+
+                return { left: arrowLeft, right: arrowRight };
+            }
+        }
+
+        // 공연 종료 여부 확인 함수
+        function isEnded(date, endDate) {
+            const today = new Date();
+            const showEndDate = new Date(endDate || date);
+            return showEndDate < today;
+        }
+
+ // 날짜 상태 계산 함수
+    function getDateStatus(startDate, endDate, type) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const start = new Date(startDate);
+        start.setHours(0, 0, 0, 0);
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+
+        // 영상인 경우 항상 "지금 시청가능" 표시
+        if (type === '영상') {
+            return "지금 시청가능";
+        }
+        
+        // 중계인 경우 종료일이 지난 후에만 "지금 시청가능" 표시
+        if (type === '중계' && today > end) {
+            return "지금 시청가능";
+        }
+
+        if (today > end && type !== '중계') {
+            return "종료";
+        } else if (today < start) {
+            const daysUntilStart = Math.ceil((start - today) / (1000 * 60 * 60 * 24));
+            return `D-${daysUntilStart}`;
+        } else {
+            return "진행중";
+        }
+    }
+
+        // URL 생성 함수
+        function generateUrl(showName) {
+            return showName.replace(/\s+/g, ' ');
+        }
+
+        // 공연 목록 필터링 및 로드 함수
+        function filterAndLoadShows() {
+            let filteredShows = shows;
+            
+            if (currentCategory !== '전체') {
+                filteredShows = shows.filter(show => show.type === currentCategory);
+            }
+
+            // D-day 계산 함수
+            function getDday(startDate, endDate) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const start = new Date(startDate);
+                start.setHours(0, 0, 0, 0);
+                const end = new Date(endDate);
+                end.setHours(23, 59, 59, 999);
+
+                if (today > end) {
+                    return Number.MAX_SAFE_INTEGER; // 종료된 공연은 가장 뒤로
+                } else if (today < start) {
+                    return Math.ceil((start - today) / (1000 * 60 * 60 * 24)); // D-day 계산
+                } else {
+                    return 0; // 진행중인 공연은 가장 앞으로
+                }
+            }
+
+            filteredShows.sort((a, b) => {
+                const dDayA = getDday(a.date, a.endDate);
+                const dDayB = getDday(b.date, b.endDate);
+
+                if (currentSort === 'latest') {
+                    // 진행중인 공연 > D-day 임박한 공연 > 나머지 순으로 정렬
+                    if (dDayA === dDayB) {
+                        // D-day가 같은 경우 시작일이 최신인 것이 위로
+                        return new Date(b.date) - new Date(a.date);
+                    }
+                    return dDayA - dDayB;
+                } else {
+                    // 오래된순은 기존대로 시작일 기준 정렬
+                    return new Date(a.date) - new Date(b.date);
+                }
+            });
+
+            if (isListView) {
+                loadShows(filteredShows);
+            } else {
+                loadGallery(filteredShows);
+            }
+        }
+
+        // 검색 기능 설정 함수
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', () => {
+                currentPage = 1; // 검색 시 페이지 리셋
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const filteredShows = shows.filter(show => 
+                    show.name.toLowerCase().includes(searchTerm) ||         // 공연명
+                    show.venue.toLowerCase().includes(searchTerm) ||        // 장소
+                    show.cast.toLowerCase().includes(searchTerm) ||         // 출연
+                    show.organizer.toLowerCase().includes(searchTerm) ||    // 주최/주관
+                    show.withorganizer.toLowerCase().includes(searchTerm)   // 협업기관
+                );
+                if (isListView) {
+                    loadShows(filteredShows);
+                } else {
+                    loadGallery(filteredShows);
+                }
+            });
+        }
+
+        // 뷰 전환 버튼 설정 함수
+        function setupViewToggle() {
+            const viewToggleBtn = document.getElementById('viewToggleBtn');
+            viewToggleBtn.addEventListener('click', () => {
+                isListView = !isListView;
+                currentPage = 1; // 뷰 전환 시 페이지 리셋
+                viewToggleBtn.innerHTML = isListView ? '갤러리<br>보기' : '리스트<br>보기';
+                filterAndLoadShows();
+            });
+        }
+
+        // 날짜 표시 형식화 함수
+        function formatDateDisplay(startDate, endDate) {
+            const start = startDate.trim();
+            const end = endDate?.trim() || start;
+            
+            // 시작일과 종료일이 같거나, 종료일이 없는 경우
+            if (start === end || !endDate) {
+                return start;
+            }
+            
+            // 시작일과 종료일이 다른 경우
+            return `${start} ~ ${end}`;
+        }
+
+        // 리스트 뷰 로드 함수
+        // 공연 목록 로드 함수
+        function loadShows(filteredShows) {
+            const showContainer = document.getElementById('showContainer');
+            showContainer.innerHTML = '';
+            showContainer.className = 'show-list';
+
+            const endIndex = pageSize * currentPage;
+            const showsToDisplay = filteredShows.slice(0, endIndex);
+
+            showsToDisplay.forEach(show => {
+                const showElement = document.createElement('a');
+                showElement.href = `https://i-dima.github.io/DIMAART/${generateUrl(show.name)}`;
+                // 중계와 영상 타입은 ended 클래스를 적용하지 않음
+                const isShowEnded = show.type !== '중계' && show.type !== '영상' && isEnded(show.date, show.endDate);
+                showElement.className = `show ${isShowEnded ? 'ended' : ''}`;
+                
+                const poster = document.createElement('img');
+                poster.src = show.image;
+                poster.alt = `${show.name} 포스터`;
+                
+                const info = document.createElement('div');
+                info.className = 'show-info';
+                
+                const title = document.createElement('h3');
+                title.textContent = show.name;
+                
+                const date = document.createElement('p');
+                date.textContent = formatDateDisplay(show.date, show.endDate);
+                
+                const status = document.createElement('div');
+                status.className = 'show-date';
+                const dateStatus = getDateStatus(show.date, show.endDate, show.type);
+                status.innerHTML = `<p><span style="color: ${
+                    dateStatus === '종료' ? 'red' : 
+                    dateStatus === '진행중' ? 'green' : 
+                    dateStatus === '지금 시청가능' ? 'blue' : 'blue'
+                }">${dateStatus}</span></p>`;
+                
+                info.appendChild(title);
+                info.appendChild(date);
+                showElement.appendChild(poster);
+                showElement.appendChild(info);
+                showElement.appendChild(status);
+                
+                showContainer.appendChild(showElement);
+            });
+
+            // 더보기 버튼 처리
+            const existingButton = document.querySelector('.load-more-btn');
+            if (existingButton) {
+                existingButton.remove();
+            }
+
+            if (endIndex < filteredShows.length) {
+                const loadMoreBtn = document.createElement('button');
+                loadMoreBtn.className = 'load-more-btn';
+                loadMoreBtn.textContent = '더보기';
+                loadMoreBtn.onclick = () => {
+                    currentPage++;
+                    loadShows(filteredShows);
+                };
+                showContainer.after(loadMoreBtn);
+            }
+        }
+
+        // 갤러리 뷰 로드 함수
+        function loadGallery(filteredShows) {
+            const showContainer = document.getElementById('showContainer');
+            showContainer.innerHTML = '';
+            showContainer.className = 'show-gallery';
+
+            // 현재 페이지까지의 아이템만 표시
+            const endIndex = pageSize * currentPage;
+            const showsToDisplay = filteredShows.slice(0, endIndex);
+
+            showsToDisplay.forEach(show => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = `gallery-item ${isEnded(show.date, show.endDate) ? 'ended' : ''}`;
+                
+                const link = document.createElement('a');
+                link.href = `https://i-dima.github.io/DIMAART/${generateUrl(show.name)}`;
+                
+                const img = document.createElement('img');
+                img.src = show.image;
+                img.alt = `${show.name} 포스터`;
+                
+                link.appendChild(img);
+                galleryItem.appendChild(link);
+                showContainer.appendChild(galleryItem);
+            });
+
+            // 더보기 버튼 처리
+            const existingButton = document.querySelector('.load-more-btn');
+            if (existingButton) {
+                existingButton.remove();
+            }
+
+            if (endIndex < filteredShows.length) {
+                const loadMoreBtn = document.createElement('button');
+                loadMoreBtn.className = 'load-more-btn';
+                loadMoreBtn.textContent = '더보기';
+                loadMoreBtn.onclick = () => {
+                    currentPage++;
+                    loadGallery(filteredShows);
+                };
+                showContainer.after(loadMoreBtn);
+            }
+        }
+    }
+    </script>
+</body>
+</html>
