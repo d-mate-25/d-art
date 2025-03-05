@@ -14,7 +14,7 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="showTitle">DIMA ART</title>
+    <title id="showTitle">D-ART</title>
     <link rel="icon" href="logo.svg" type="image/x-icon">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <style>
@@ -478,7 +478,7 @@ color: #b33d74; /* 호버 시 하이퍼링크 색상 */
 <body>
     <div class="top-nav">
         <div class="top-nav-content">
-            <a href="https://i-dima.github.io/DIMAART/" class="logo">DIMA ART</a>
+            <a href="https://d-mate-25.github.io/d-art/" class="logo">D-ART</a>
         </div>
     </div>
 
@@ -555,9 +555,9 @@ color: #b33d74; /* 호버 시 하이퍼링크 색상 */
     
         <footer class="footer">
             <div class="footer-content">
-                <a href="https://i-dima.github.io" target="_blank">I-DIMAㅣ</a>
-                <a href="https://i-dima.github.io/service" target="_blank">이용약관ㅣ</a>
-                <a href="https://i-dima.github.io/service#privacy" target="_blank">개인정보 처리방침</a>
+                <a href="https://d-mate-25.github.io" target="_blank">D-artㅣ</a>
+                <a href="https://d-mate-25.github.io/d-artservice" target="_blank">이용약관ㅣ</a>
+                <a href="https://d-mate-25.github.io/d-art/service#privacy" target="_blank">개인정보 처리방침</a>
             </div>
         </footer>
 
@@ -609,9 +609,9 @@ color: #b33d74; /* 호버 시 하이퍼링크 색상 */
     
     <footer class="footer">
         <div class="footer-content">
-            <a href="https://i-dima.github.io" target="_blank">I-DIMAㅣ</a>
-            <a href="https://i-dima.github.io/service" target="_blank">이용약관ㅣ</a>
-            <a href="https://i-dima.github.io/service#privacy" target="_blank">개인정보 처리방침</a>
+            <a href="https://d-mate-25.github.io" target="_blank">D-ARTㅣ</a>
+            <a href="https://d-mate-25.github.io/d-art/service" target="_blank">이용약관ㅣ</a>
+            <a href="https://d-mate-25.github.io/d-art/service#privacy" target="_blank">개인정보 처리방침</a>
         </div>
     </footer>
 
@@ -697,7 +697,7 @@ google.charts.load("current", { packages: ["corechart"] }).then(() => {
         const showInfo = shows[showKey];
 
         if (showInfo) {
-            document.getElementById('showTitle').textContent = `${showInfo.name} | DIMA ART`;
+            document.getElementById('showTitle').textContent = `${showInfo.name} | D-ART`;
             updateLayout(showInfo);
             document.getElementById('showTime').textContent = showInfo.time;
             
@@ -748,14 +748,17 @@ google.charts.load("current", { packages: ["corechart"] }).then(() => {
                 updateGalleryImage();
 
             // 예매 링크 처리
-                const bookingLinkElement = document.getElementById('bookingLink');
-                if (showInfo.bookinglink) {
-                    bookingLinkElement.textContent = showInfo.bookinglink;
-                    bookingLinkElement.href = showInfo.bookinglink;
-                    bookingLinkElement.parentElement.style.display = 'block';
-                } else {
-                    bookingLinkElement.parentElement.style.display = 'none';
-                }
+            const bookingLinkElement = document.getElementById('bookingLink');
+
+            if (showInfo.bookinglink) {
+                bookingLinkElement.textContent = showInfo.bookinglink;
+                bookingLinkElement.href = showInfo.bookinglink;
+                bookingLinkElement.parentElement
+                    .style.display = 'block';
+            } else {
+                bookingLinkElement.parentElement
+                    .style.display = 'none';
+            }
 
             // 링크 처리
                 const linkElement = document.getElementById('showLink');
@@ -872,7 +875,7 @@ function updatePerformanceLayout(showInfo) {
         // 텍스트와 하이퍼링크 부분 분리
         const venueText = document.createTextNode(showInfo.venue.substring(0, showInfo.venue.lastIndexOf(lastWord)));
         const venueLink = document.createElement('a');
-        venueLink.href = `https://i-dima.github.io/DIMAMAP/${lastWord}`;
+        venueLink.href = `https://d-mate-25.github.io/d-map/${lastWord}`;
         venueLink.textContent = lastWord;
         venueLink.target = "_blank";  // 새 탭에서 열기
         
@@ -1052,7 +1055,7 @@ function shareShow() {
 }
 
 function goToList() {
-    window.location.href = "https://i-dima.github.io/DIMAART/";
+    window.location.href = "https://https://d-mate-25.github.io/d-art";
 }
 
 function goToList2() {
