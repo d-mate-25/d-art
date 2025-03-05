@@ -12,7 +12,7 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIMA ART</title>
+    <title>D-ART</title>
     <link rel="icon" href="logo.svg" type="image/x-icon">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <style>
@@ -577,7 +577,7 @@
 <body>
     <div class="top-nav">
         <div class="top-nav-content">
-            <a href="https://i-dima.github.io/DIMAART/" class="logo">DIMA ART</a>
+            <a href="https://d-mate-25.github.io/d-art/" class="logo">D-ART</a>
             <div class="nav-menu">
                 <a href="#" class="active">전체</a>
                 <a href="#">공연</a>
@@ -594,8 +594,8 @@
                 <div class="dot"></div>
             </div>
         </div>
-        <div class="banner-right" onclick="location.href='https://i-dima.github.io/DIMAART/소개'">
-            <h2>DIMA ART</h2>
+        <div class="banner-right" onclick="location.href='https://d-mate-25.github.io/d-art/info'">
+            <h2>D-ART</h2>
             <p>자세히 보기</p>
         </div>
     </div>
@@ -614,9 +614,9 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <a href="https://i-dima.github.io/" target="_blank">I-DIMAㅣ</a>
-            <a href="https://i-dima.github.io/service" target="_blank">이용약관ㅣ</a>
-            <a href="https://i-dima.github.io/service#privacy" target="_blank">개인정보 처리방침</a>
+            <a href="https://d-mate-25.github.io/" target="_blank">D-MATEㅣ</a>
+            <a href="https://d-mate-25.github.io/service" target="_blank">이용약관ㅣ</a>
+            <a href="https://d-mate-25.github.io/service#privacy" target="_blank">개인정보 처리방침</a>
         </div>
     </footer>
 
@@ -766,7 +766,7 @@
             slide.className = `slide ${index === 0 ? 'active' : ''}`;
             slide.style.backgroundImage = `url(${show.image})`;
             // 링크 수정
-            slide.setAttribute('data-url', `https://i-dima.github.io/DIMAART/${show.name}`);
+            slide.setAttribute('data-url', `https://d-mate-25.github.io/d-art/${show.name}`);
 
             // 제목과 날짜를 포함할 컨테이너
             const textContainer = document.createElement('div');
@@ -1060,7 +1060,7 @@
 
             showsToDisplay.forEach(show => {
                 const showElement = document.createElement('a');
-                showElement.href = `https://i-dima.github.io/DIMAART/${generateUrl(show.name)}`;
+                showElement.href = `https://d-mate-25.github.io/d-art/${generateUrl(show.name)}`;
                 // 중계와 영상 타입은 ended 클래스를 적용하지 않음
                 const isShowEnded = show.type !== '중계' && show.type !== '영상' && isEnded(show.date, show.endDate);
                 showElement.className = `show ${isShowEnded ? 'ended' : ''}`;
@@ -1129,7 +1129,7 @@
                 galleryItem.className = `gallery-item ${isEnded(show.date, show.endDate) ? 'ended' : ''}`;
                 
                 const link = document.createElement('a');
-                link.href = `https://i-dima.github.io/DIMAART/${generateUrl(show.name)}`;
+                link.href = `https://d-mate-25.github.io/d-art/${generateUrl(show.name)}`;
                 
                 const img = document.createElement('img');
                 img.src = show.image;
